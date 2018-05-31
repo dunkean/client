@@ -3,6 +3,8 @@ const ApiClient = require('./apiClient')
 const WebStoreClient = require('./webstoreClient')
 
 const ProductCategories = require('./api/productCategories')
+const Stores = require('./api/stores')
+const Brands = require('./api/brands')
 const Products = require('./api/products/products')
 const ProductOptions = require('./api/products/options')
 const ProductOptionValues = require('./api/products/optionValues')
@@ -65,6 +67,8 @@ class Client {
     this.products.variants = new ProductVariants(apiClient);
     this.products.images = new ProductImages(apiClient);
     this.productCategories = new ProductCategories(apiClient);
+    this.brands = new Brands(apiClient);
+    this.stores = new Stores(apiClient);
     this.customers = new Customers(apiClient);
     this.orders = new Orders(apiClient);
     this.orders.discounts = new OrderDiscounts(apiClient);
@@ -95,6 +99,8 @@ class Client {
 
     this.ajax = {};
     this.ajax.products = new Products(ajaxClient);
+    this.ajax.brands = new Brands(ajaxClient);
+    this.ajax.stores = new Stores(ajaxClient);
     this.ajax.sitemap = new Sitemap(ajaxClient);
     this.ajax.cart = new AjaxCart(ajaxClient);
     this.ajax.countries = new Countries(ajaxClient);
